@@ -33,12 +33,12 @@ exports.handler = function(req, response) {
     db.getMessages(response);    
   }
 
-  if (req.method === 'POST'){
+  if (req.method === "POST"){
     statusCode = 201;
-    console.log("In POST");
     response.writeHead(statusCode, headers);
     req.on('data',function(chunk){
       var message = JSON.parse(chunk.toString());
+      console.log("In POST, message: ",message);
       db.postMessage(message,response);
     });
   }

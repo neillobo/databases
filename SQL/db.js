@@ -32,8 +32,9 @@ exports.getMessages = function(response){
 
 exports.postMessage = function(message,response){
 	console.log("The message received is ",message);
-	var queryString = "insert into messages (text,username,roomname) values ('"+message.text+"','"+message.username+"','"+message.roomname+"');";
-	// var queryString="insert into messages (text,username,roomname) values('Witches','Moon','Somebody');";
+	message.text=message.message;
+	// var queryString = "insert into messages (text,username,roomname) values ('"+message.text+"','"+message.username+"','"+message.roomname+"');";
+	var queryString = "insert into messages (text,username) values ('"+message.text+"','"+message.username+"');";
 	dbConnection.query(queryString, function(err,dbResults){
 		if(err){
 			throw err;
